@@ -38,9 +38,14 @@
     tags:
       - teamcity
 
-  - name: Teamcity |  Template systemd
-    template: src="{{role_dir}}/templates/systemd/teamcity.service.j2" dest="/usr/lib/systemd/system/teamcity.service" mode="755"
+  - name: Teamcity | Setup Environment
     template: src="{{role_dir}}/templates/systemd/teamcity.sysconfig.j2" dest="/etc/sysconfig/teamcity" mode="644"
+    become: yes
+    tags:
+      - teamcity
+  
+  - name: Teamcity | Install systemd service
+    template: src="{{role_dir}}/templates/systemd/teamcity.service.j2" dest="/usr/lib/systemd/system/teamcity.service" mode="755"
     become: yes
     tags:
       - teamcity
