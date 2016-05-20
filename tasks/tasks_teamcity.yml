@@ -37,29 +37,9 @@
     tags:
       - teamcity
 
-  - name: Teamcity |  Get postgress jdbc driver
-    get_url: url="http://jdbc.postgresql.org/download/postgresql-9.3-1101.jdbc41.jar" dest="{{teamcity_install_dir}}/.BuildServer/lib/jdbc/postgresql-9.3-1101.jdbc41.jar"
-    become: yes
-    become_user: teamcity
-    when: teamcity_present | failed
-    tags:
-      - teamcity
-
-  - name: Teamcity |  Template database connection config
-    template: src="{{role_dir}}/templates/postgres/postgres.database.properties.j2" dest="{{teamcity_install_dir}}/.BuildServer/config/database.properties"
-    become: yes
-    become_user: teamcity
-    tags:
-      - teamcity
-
   - name: Teamcity |  Template upstart
     template: src="{{role_dir}}/templates/upstart/teamcity.j2" dest="/etc/init.d/teamcity" mode="755"
     become: yes
     tags:
       - teamcity
 
-  - name: Teamcity |  Template nginx conf
-    template: src="{{role_dir}}/templates/nginx/teamcity.conf.j2" dest="/etc/nginx/sites-enabled/{{teamcity_domain}}"
-    become: yes
-    tags:
-      - teamcity
