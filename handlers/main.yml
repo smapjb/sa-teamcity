@@ -1,2 +1,12 @@
 ---
-# handlers file for sa-teamcity
+# handlers file for
+ - name: 'start teamcity'
+   become: yes
+   service: name=teamcity state=started
+   tags:
+     - init
+
+ - name: 'restart teamcity'
+   become: yes
+   service: name=teamcity state=restarted
+
