@@ -7,6 +7,7 @@
 
   - name: Teamcity | Check if present
     command: test -x {{teamcity_install_dir}}/TeamCity/bin/catalina.sh
+    ignore_errors: yes
     register: teamcity_present
     tags:
       - teamcity
