@@ -49,3 +49,16 @@
     become: yes
     tags:
       - teamcity
+
+  - name: Teamcity | Enable service
+    service: name=teamcity enabled=yes
+    become: yes
+    tags:
+      - teamcity
+  
+  - name: Teamcity | Start service
+    service: name=teamcity state=started
+    become: yes
+    tags:
+      - teamcity
+
