@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Type=forking
 PIDFile={{teamcity_install_dir}}/TeamCity/logs/teamcity-server.pid
-; Make sure the CATALINA_PID env variable is setup in {{teamcty_install_dir}}/TeamCity/bin/catalina.sh
+; Make sure the CATALINA_PID env variable is setup in {{teamcity_install_dir}}/TeamCity/bin/catalina.sh
 ExecStart={{teamcity_install_dir}}/TeamCity/bin/teamcity-server.sh start
 ExecStop={{teamcity_install_dir}}/TeamCity/bin/teamcity-server.sh stop
 User=teamcity
