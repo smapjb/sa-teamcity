@@ -61,4 +61,23 @@
     become: yes
     tags:
       - teamcity
+  
+  - name: Teamcity Agent | Install systemd service
+    template: src="{{role_dir}}/templates/systemd/teamcity-agent.service.j2" dest="/usr/lib/systemd/system/teamcity-agent.service" mode="755"
+    become: yes
+    tags:
+      - teamcity-agent
+
+  - name: Teamcity Agent | Enable service
+    service: name=teamcity-agent enabled=yes
+    become: yes
+    tags:
+      - teamcity-agent
+  
+  - name: Teamcity Agent | Start service
+    service: name=teamcity-agent state=started
+    become: yes
+    tags:
+      - teamcity-agent
+
 
