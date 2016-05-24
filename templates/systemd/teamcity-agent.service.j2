@@ -4,7 +4,6 @@ After=network.target
 
 [Service]
 Type=forking
-PIDFile={{teamcity_install_dir}}/TeamCity/buildAgent/logs/buildAgent.pid
 ExecStart={{teamcity_install_dir}}/TeamCity/buildAgent/bin/agent.sh start
 ExecStop={{teamcity_install_dir}}/TeamCity/buildAgent/bin/agent.sh stop
 User=teamcity
